@@ -1,7 +1,7 @@
 
 # Mac微信小程序调试工具
 
-## 支持版本列表
+## 支持版本列表(ARM&X64)
 
 > 最新版本下载链接：  
 > [3.8.10-WeChatMac_10_15.dmg](https://dldir1v6.qq.com/weixin/mac/WeChatMac_10_15.dmg)
