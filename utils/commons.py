@@ -21,11 +21,17 @@ class Commons:
 
     def inject_wehcatEx(self, pid, code):
         session = frida.attach(pid)
-        script = session.create_script(code)
-        script.on("message", self.onMessage)
-        script.load()
-        sys.stdin.read()
-        # session.detach()
+        try:
+            script = session.create_script(code)
+            script.on("message", self.onMessage)
+            script.load()
+            print(Color.GREEN + "[+] 脚本已加载，按 Ctrl+C 退出..." + Color.END)
+            sys.stdin.read()  # 等待用户输入
+        except KeyboardInterrupt:
+            print(Color.YELLOW + "\n[!] 接收到退出信号" + Color.END)
+        finally:
+            if session:
+                session.detach()  # 确保会话被正确关闭
 
     def get_architecture_suffix(self):
         """获取系统架构后缀(x64或arm)"""
